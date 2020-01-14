@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   goTo = (user) => {
-    this.setState({ currUser: `${user}`, currUserRoute: `/users/${user}` });
+    this.setState({ currUser: `${user}`, currUserRoute: process.env.PUBLIC_URL + `/users/${user}` });
     //repos [array]
     axios.get(`https://api.github.com/users/${user}/repos`)
       .then(res => this.setState({ currUserRepos: res.data }));
@@ -43,7 +43,7 @@ class App extends Component {
             </React.Fragment>
           )} />
           <Route
-            path={process.env.PUBLIC_URL + this.state.currUserRoute}
+            path={this.state.currUserRoute}
             render={(props) => <UserPage {...props} repos={this.state.currUserRepos} user={this.state.currUserProfile} />}
           />
         </div>
