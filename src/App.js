@@ -22,7 +22,9 @@ class App extends Component {
   }
 
   goTo = (user) => {
-    this.setState({ currUser: `${user}`, currUserRoute: process.env.PUBLIC_URL + `/users/${user}` });
+    const route = process.env.PUBLIC_URL + `/users/${user}`;
+    console.log(route);
+    this.setState({ currUser: `${user}`, currUserRoute: route });
     //repos [array]
     axios.get(`https://api.github.com/users/${user}/repos`)
       .then(res => this.setState({ currUserRepos: res.data }));
