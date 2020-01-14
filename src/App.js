@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   goTo = (user) => {
-    const route = process.env.PUBLIC_URL + `/users/${user}`;
+    const route = `${process.env.PUBLIC_URL}/users/${user}`;
     console.log(route);
     this.setState({ currUser: `${user}`, currUserRoute: route });
     //repos [array]
